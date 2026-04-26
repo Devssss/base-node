@@ -1,0 +1,12 @@
+{
+  "name": "Base Node Explorer",
+  "description": "A technical dashboard for monitoring the Base network and your onchain identity. Built as a Farcaster Mini App.",
+  "requestFramePermissions": [
+    "camera",
+    "location"
+  ],
+  "majorCapabilities": [
+    "onchain-transactions",
+    "farcaster-integration"
+  ]
+}
