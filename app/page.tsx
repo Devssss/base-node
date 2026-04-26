@@ -222,6 +222,72 @@ export default function Home() {
             </motion.div>
           </div>
 
+          {/* Hardware Telemetry Section */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 px-1">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Hardware Telemetry</span>
+              <div className="h-px flex-1 bg-slate-800/50" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-[#151921] border border-slate-800 p-5 rounded-xl shadow-sm flex items-center gap-5">
+                <div className="p-3 bg-sky-500/10 rounded-lg shrink-0">
+                  <Cpu className="w-6 h-6 text-sky-400" />
+                </div>
+                <div className="flex-1 space-y-2">
+                  <div className="flex justify-between items-end">
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">CPU Core Load</span>
+                    <span className="text-sm font-mono text-white">42.8%</span>
+                  </div>
+                  <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                    <motion.div 
+                      animate={{ width: ["42%", "48%", "45%", "52%", "42%"] }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                      className="h-full bg-sky-500 shadow-[0_0_10px_rgba(14,165,233,0.5)]" 
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#151921] border border-slate-800 p-5 rounded-xl shadow-sm flex items-center gap-5">
+                <div className="p-3 bg-[#0052FF]/10 rounded-lg shrink-0">
+                  <HardDrive className="w-6 h-6 text-[#0052FF]" />
+                </div>
+                <div className="flex-1 space-y-2">
+                  <div className="flex justify-between items-end">
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Memory Allocation</span>
+                    <span className="text-sm font-mono text-white">12.4 GB</span>
+                  </div>
+                  <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                    <motion.div 
+                      animate={{ width: ["72%", "74%", "73%"] }}
+                      transition={{ duration: 10, repeat: Infinity }}
+                      className="h-full bg-[#0052FF] shadow-[0_0_10px_rgba(0,82,255,0.5)]" 
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#151921] border border-slate-800 p-5 rounded-xl shadow-sm flex items-center gap-5">
+                <div className="p-3 bg-emerald-500/10 rounded-lg shrink-0">
+                  <Activity className="w-6 h-6 text-emerald-400" />
+                </div>
+                <div className="flex-1 space-y-2">
+                  <div className="flex justify-between items-end">
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Network I/O</span>
+                    <span className="text-sm font-mono text-white">284 Mb/s</span>
+                  </div>
+                  <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                    <motion.div 
+                      animate={{ width: ["20%", "85%", "45%", "90%", "30%"] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                      className="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" 
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Center Layout: Feed and Sync */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 bg-[#151921] border border-slate-800 rounded-xl overflow-hidden shadow-sm flex flex-col min-h-[300px]">
