@@ -17,7 +17,9 @@ import {
   Users,
   BarChart3,
   Settings,
-  HardDrive
+  HardDrive,
+  CheckCircle,
+  XCircle
 } from 'lucide-react';
 import { 
   ConnectWallet, 
@@ -222,13 +224,13 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Hardware Telemetry Section */}
+          {/* Node Statistics Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 px-1">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Hardware Telemetry</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Node Statistics</span>
               <div className="h-px flex-1 bg-slate-800/50" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
               <div className="bg-[#151921] border border-slate-800 p-5 rounded-xl shadow-sm flex items-center gap-5">
                 <div className="p-3 bg-sky-500/10 rounded-lg shrink-0">
                   <Cpu className="w-6 h-6 text-sky-400" />
@@ -282,6 +284,19 @@ export default function Home() {
                       transition={{ duration: 3, repeat: Infinity }}
                       className="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" 
                     />
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#151921] border border-slate-800 p-5 rounded-xl shadow-sm flex items-center gap-5">
+                <div className="p-3 bg-emerald-500/10 rounded-lg shrink-0">
+                  <CheckCircle className="w-6 h-6 text-emerald-400" />
+                </div>
+                <div className="flex-1">
+                  <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1">Network Health</div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-mono text-white">Optimal</span>
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
                 </div>
               </div>
