@@ -40,10 +40,18 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   const { data: blockNumber } = useBlockNumber({ watch: true });
   const { data: gasPrice } = useGasPrice({ watch: true });
+  const [isHealthy, setIsHealthy] = useState(true);
   const [uptime, setUptime] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => setUptime(prev => prev + 1), 1000);
+    const timer = setInterval(() => {
+      setUptime(prev => prev + 1);
+      // Simulate rare health flickers
+      if (Math.random() > 0.99) {
+        setIsHealthy(prev => !prev);
+        setTimeout(() => setIsHealthy(true), 3000);
+      }
+    }, 1000);
     return () => clearInterval(timer);
   }, []);
 
@@ -289,14 +297,20 @@ export default function Home() {
               </div>
 
               <div className="bg-[#151921] border border-slate-800 p-5 rounded-xl shadow-sm flex items-center gap-5">
-                <div className="p-3 bg-emerald-500/10 rounded-lg shrink-0">
-                  <CheckCircle className="w-6 h-6 text-emerald-400" />
+                <div className={`p-3 rounded-lg shrink-0 ${isHealthy ? 'bg-emerald-500/10' : 'bg-red-500/10'}`}>
+                  {isHealthy ? (
+                    <CheckCircle className="w-6 h-6 text-emerald-400" />
+                  ) : (
+                    <XCircle className="w-6 h-6 text-red-500" />
+                  )}
                 </div>
                 <div className="flex-1">
                   <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1">Network Health</div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-mono text-white">Optimal</span>
-                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className={`text-sm font-mono ${isHealthy ? 'text-white' : 'text-red-400 font-bold'}`}>
+                      {isHealthy ? 'Optimal' : 'Degraded'}
+                    </span>
+                    <div className={`w-2 h-2 rounded-full animate-pulse ${isHealthy ? 'bg-emerald-500' : 'bg-red-500'}`} />
                   </div>
                 </div>
               </div>
